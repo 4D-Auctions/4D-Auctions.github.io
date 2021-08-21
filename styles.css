@@ -1,0 +1,10 @@
+.bg-primary,
+.btn-primary,
+.bg-4dgreen {
+  background-color: #bada56 !important;
+  border-color: #9db948 !important;
+}
+
+:root {
+  --bs-primary: #bada56;
+}

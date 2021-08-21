@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <title>4D Auctions</title>
+
+    <script>
+      window.bidjs = {
+        config: {
+          clientId: "demonstration", // e.g. demonstration
+          googleMapsApiKey: "<<YOUR_KEY>>",
+          region: "eu-west-2", // e.g. eu-west-2
+          server: "hove", // e.g. hove
+        },
+        options: {
+          disableBranding: false,
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=<<YOUR_GOOGLE_MAPS_API>>"
+      type="text/javascript"
+    ></script>
+    <script
+      defer
+      src="//hove.eu-west-2.bidjs.com/static/4/js/bid-dependencies.min.js"
+    ></script>
+    <script
+      defer
+      src="//hove.eu-west-2.bidjs.com/static/4/js/hbs-bid.min.js"
+    ></script>
+    <script
+      defer
+      src="//hove.eu-west-2.bidjs.com/static/4/js/bid.min.js"
+    ></script>
+    <script
+      defer
+      src="https://static.bidjs.com/4/bootstrap3/js/bidjs-modules.chunk.js"
+    ></script>
+    <noscript
+      ><link
+        href="//hove.eu-west-2.bidjs.com/static/4/css/bid.min.css"
+        rel="stylesheet"
+        type="text/css"
+    /></noscript>
+    <link
+      rel="preload"
+      href="//hove.eu-west-2.bidjs.com/static/4/css/bid.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-dark min-vh-100 d-flex flex-column">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <img src="./images/logo.webp" alt="4D Auctions" />
+          </a>
+          <div class="d-flex">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active bg-4dgreen"
+                    aria-current="page"
+                    href="/"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/#!/search">Search</a>
+                </li>
+                <li class="nav-item x-bidlogix--authenticated-hide hidden">
+                  <a class="nav-link" href="/#!/login">Log In</a>
+                </li>
+                <li class="nav-item x-bidlogix--authenticated-hide hidden">
+                  <a class="nav-link" href="/#!/account">Create Account</a>
+                </li>
+                <li
+                  class="
+                    nav-item
+                    dropdown
+                    x-bidlogix--authenticated-show
+                    hidden
+                  "
+                >
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span class="x-bidlogix--templated-user"></span>
+                  </a>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="/#!/account">My Account</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/#!/myBids">My Bids</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/#!/mySales">My Sales</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/#!/logout">Logout</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="py-5 bg-light flex-grow-1">
+      <div class="container">
+        <div id="bidlogix-app" class="bidlogix-app bidjs-app"></div>
+      </div>
+
+      <div class="bidlogix-app bidjs-app">
+        <div id="bidlogix-modal"></div>
+      </div>
+
+      <div class="container bidlogix-app">
+        <div id="bidjs" class="bidjs-app"></div>
+      </div>
+    </main>
+    <footer
+      class="bg-4dgreen d-flex justify-content-center fs-4 text-light py-4"
+    >
+      <i class="bi bi-facebook"></i>
+      <i class="bi bi-twitter ms-3"></i>
+      <i class="bi bi-instagram ms-3"></i>
+      <i class="bi bi-linkedin ms-3"></i>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
